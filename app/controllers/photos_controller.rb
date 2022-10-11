@@ -12,7 +12,13 @@ class PhotosController < ApplicationController
     end
     
     if @photo.save
+      if @album == Album.first
+
+        redirect_to root_path
+
+      else
       redirect_to album_path(@album)
+      end
     else
       render :new , status: :unprocessable_entity
     end

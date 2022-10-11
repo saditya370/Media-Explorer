@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "albums/10"
   # root :controller => 'albums', :action => '/'
-  root "albums#show"
-  # root "albums#index"
+  # root "albums#show"
+  root "albums#index"
   
   
 end

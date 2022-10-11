@@ -1,14 +1,36 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Albums</h1>
+           <%= link_to "New album", new_album_path ,class: "btn btn-secondary"%>
 
 <div id="albums">
+<%=render partial: "albums/def"%>
+
   <% @albums.each do |album| %>
+  <%if album != Album.first%>
     <%= render album %>
-    <p>
-      <%= link_to "Show this album", album ,class: "btn btn-secondary"%>
-    </p>
+      <%= link_to "Add Photos to this album", album ,class: "btn btn-secondary" %><br>
+      
+ <%album.photos.each do |a|%>
+ 
+    <%# <%=render partial: "photos/draggable", album: album%> 
+    <%if a.image.attached?%>
+         
+              <%=image_tag a.image,width: "200px"%>
+              
+        
+    <%end%>
+    <%end%>
+    <%end%>
+  
+
+  
+    
+  
   <% end %>
+
+
+
+
 </div>
 
 <%# <%= link_to "New album", new_album_path %> 

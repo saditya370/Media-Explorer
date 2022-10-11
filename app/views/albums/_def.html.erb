@@ -1,0 +1,15 @@
+<%@album = Album.first%>
+<%= render @album %>
+
+<div id="foo">
+  <%= render partial: "photos/form"%>
+
+<div id="bar">
+<%@album.photos.each do |a|%>
+
+    <%if a.image.attached?%>
+         
+              <%=image_tag a.image,width: "200px"%>
+        
+    <%end%>
+  <%end%>

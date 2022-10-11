@@ -4,14 +4,12 @@ class Photo < ApplicationRecord
     belongs_to :album
     has_one_attached :image
 
-    # after_create :set_increment
+   
+    before_create :set_position
 
-    # def set_increment
-    #     if position == nil
-    #     self.update(position: 1)
-    #     else
-    #         position += 1
-    #         self.update(:position)
-    #     end
-    # end
+    def set_position
+        
+        max_position = Photo.maximum(:position) 
+        self.position = max_position.nil? ? 1 : max_position+1
+      end
 end
