@@ -1,14 +1,16 @@
 class DragController < ApplicationController
 
 
-    def post
-        @photo = Photo.find(drag_post_params[:id])
-        @photo.insert_at(drag_post_params[:position].to_i + 1 )
+    def photo
+        # @album = Album.find(drag_album_params[:id])
+        @photo = Photo.find(params[:resource][:id])
+        @photo.insert_at!(params[:resource][:position].to_i + 1)
+        # debugger
     end 
     private
 
-    def drag_post_params 
+    def drag_photo_params 
         params.require(:resource).permit(:id,:position,:image)
     end
-
+   
 end

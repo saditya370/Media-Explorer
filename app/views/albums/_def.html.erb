@@ -1,15 +1,26 @@
 <%@album = Album.first%>
 <%= render @album %>
 
-<div id="foo">
+
   <%= render partial: "photos/form"%>
 
-<div id="bar">
-<%@album.photos.each do |a|%>
+<div id="photo">
+<%# <%@album = Album.first.order(position: :asc)%> 
+<%@album.photos.order(position: :asc).each do |photo|%>
 
-    <%if a.image.attached?%>
+    <%= render "photos/draggable",photo: photo,album: @album%>
+    
+  <!--  <%if photo.image.attached?%>
          
-              <%=image_tag a.image,width: "200px"%>
+              <%=image_tag photo.image,width: "200px"%>
         
-    <%end%>
+    <%end%> -->
+    <br>
   <%end%>
+    </div>
+    <style>
+  #photo {
+    display: flex;
+    flex-wrap: wrap;
+  }
+    </style>

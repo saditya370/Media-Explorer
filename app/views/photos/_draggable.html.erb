@@ -3,12 +3,14 @@
                     dragenter->drag#dragEnter
                     drop->drag#drop
                     dragend->drag#dragEnd" %>
+
 <%= content_tag(:div, class: 'bi bi-grip-vertical draggable', draggable: true, data: {
     controller: "drag",
     action: dragActions,
-    resource_id: project.id,
-    url: "/drag/project",
-    parent: "projects",
+    resource_id: photo.id,
+    resource1_id: photo.album.id, 
+    url: "/drag/photo",
+    parent: "photo",
 }) do %>
-  <%= render project %>
+  <%= render photo %>
 <% end %>

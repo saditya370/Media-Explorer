@@ -4,7 +4,7 @@ class Photo < ApplicationRecord
     belongs_to :album
     has_one_attached :image
 
-   
+   acts_as_list
     before_create :set_position
 
     def set_position

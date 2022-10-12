@@ -1,6 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
-
+let albumId;
+const dataAlbumID = "data-album-id";
 
 const dataResourceID = "data-resource-id";
 
@@ -9,6 +10,8 @@ const dataParent = "data-Parent";
 let url;
 
 let resourceID;
+
+
 
 
 let newPosition;
