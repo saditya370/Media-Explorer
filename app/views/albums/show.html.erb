@@ -6,20 +6,16 @@
   <%= render partial: "photos/form"%>
 
 <div id="bar">
-<%@album.photos.each do |a|%>
+<%@album.photos.order(position: :asc).each do |photo|%>
 
-    <%if a.image.attached?%>
-         
-              <%=image_tag a.image,width: "200px"%>
-        
-    <%end%>
+    <%= render "photos/draggable",photo: photo%>
   <%end%>
 
   <style>
   #foo{
     text-align: center;
   }
-  #{
+  #bar{
     display: flex;
     
 
