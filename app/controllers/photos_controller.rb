@@ -1,36 +1,36 @@
+# frozen_string_literal: true
+
 class PhotosController < ApplicationController
-def index
-  @album = Album.find(params[:album_id])
-  @photo = @album.photos.all.order(position: :asc)
-end
+  def index
+    @album = Album.find(params[:album_id])
+    # @photo = @album.photos.all.order(position: :asc)
+  end
 
   def create
     @album = Album.find(params[:album_id])
     @photo = @album.photos.new
     var = photo_params[:image]
-    # debugger
+
     var.each do |a|
-      if(a == "")
-        next
-      end
-      @photo= @album.photos.create!(image: a)
+      next if a == ''
+
+      @photo = @album.photos.create!(image: a)
     end
-    
+
     if @photo.save
       if @album == Album.first
 
         redirect_to root_path
 
       else
-      redirect_to album_path(@album)
+        redirect_to album_path(@album)
       end
     else
-      render :new , status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
-  def update 
-
+  def update
     @album = Album.find(params[:album_id])
     if @photo.update
 
@@ -40,16 +40,11 @@ end
       redirect_to album_path(@ablum)
 
     end
-
-
-
   end
 
-  private 
+  private
 
-  def photo_params 
-
-      params.require(:photo).permit(:album_id,image: [])
-
+  def photo_params
+    params.require(:photo).permit(:album_id, image: [])
   end
 end

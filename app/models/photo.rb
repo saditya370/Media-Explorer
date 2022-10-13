@@ -1,15 +1,14 @@
+# frozen_string_literal: true
+
 class Photo < ApplicationRecord
+  belongs_to :album
+  has_one_attached :image
 
-    
-    belongs_to :album
-    has_one_attached :image
+  acts_as_list
+  before_create :set_position
 
-   acts_as_list
-    before_create :set_position
-
-    def set_position
-        
-        max_position = Photo.maximum(:position) 
-        self.position = max_position.nil? ? 1 : max_position+1
-      end
+  def set_position
+    max_position = Photo.maximum(:position)
+    self.position = max_position.nil? ? 1 : max_position + 1
+  end
 end

@@ -14,13 +14,7 @@
     <%album.photos.order(position: :asc).each do |photo|%>
 
     <%= render "photos/draggable",photo: photo,album: album%>
-    <%# <%=render partial: "photos/draggable", album: album%> 
-    <%# <%if a.image.attached?%> 
-         
-              <%# <%=image_tag a.image,width: "200px"%> 
-              
-        
-    <%# <%end%> 
+  
     <%end%>
     </div>
     <%end%>
@@ -45,4 +39,4 @@
 
 </div>
 
-<%# <%= link_to "New album", new_album_path %> 
+
