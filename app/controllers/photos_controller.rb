@@ -1,19 +1,18 @@
 # frozen_string_literal: true
 
 class PhotosController < ApplicationController
+  before_action :set_album
   def index
     @album = Album.find(params[:album_id])
     # @photo = @album.photos.all.order(position: :asc)
   end
 
   def create
-    @album = Album.find(params[:album_id])
-    @photo = @album.photos.new
-    var = photo_params[:image]
+    # @photo = @album.photos.new
+    all_photos = photo_params[:image]
 
-    var.each do |a|
-      next if a == ''
-
+    all_photos.shift
+    all_photos.each do |a|
       @photo = @album.photos.create!(image: a)
     end
 
@@ -43,6 +42,10 @@ class PhotosController < ApplicationController
   end
 
   private
+
+  def set_album
+    @album = Album.find(params[:album_id])
+  end
 
   def photo_params
     params.require(:photo).permit(:album_id, image: [])
