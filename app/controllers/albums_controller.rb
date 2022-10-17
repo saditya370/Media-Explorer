@@ -21,10 +21,12 @@ class AlbumsController < ApplicationController
 
   # POST /albums or /albums.json
   def create
+    
     @album = Album.new(album_params)
-
+    
     respond_to do |format|
       if @album.save
+        
         format.html { redirect_to album_url(@album), notice: 'Album was successfully created.' }
         format.json { render :show, status: :created, location: @album }
       else
