@@ -18,6 +18,7 @@ RSpec.describe Album, type: :model do
       album = Album.new(name: nil)
       expect(album).to_not be_valid
     end
-    
+
+
 
 end

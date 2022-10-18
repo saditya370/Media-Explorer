@@ -4,6 +4,9 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.2'
+gem 'pry', '~> 0.13.1'
+
+gem 'simplecov', require: false, group: :test
 
 gem 'rubocop', '~> 1.36', require: false
 

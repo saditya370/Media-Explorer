@@ -11,4 +11,10 @@ RSpec.describe Photo, type: :model do
       photo = Photo.create(position: 5)
       expect(photo.position).to be(5)
     end
+
+   
+
+
+    
+    
 end
