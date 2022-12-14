@@ -36,29 +36,6 @@ class AlbumsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /albums/1 or /albums/1.json
-  # def update
-  #   respond_to do |format|
-  #     if @album.update(album_params)
-  #       format.html { redirect_to album_url(@album), notice: 'Album was successfully updated.' }
-  #       format.json { render :show, status: :ok, location: @album }
-  #     else
-  #       format.html { render :edit, status: :unprocessable_entity }
-  #       format.json { render json: @album.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
-  # # DELETE /albums/1 or /albums/1.json
-  # def destroy
-  #   @album.destroy
-
-  #   respond_to do |format|
-  #     format.html { redirect_to albums_url, notice: 'Album was successfully destroyed.' }
-  #     format.json { head :no_content }
-  #   end
-  # end
-
   private
 
   # Use callbacks to share common setup or constraints between actions.

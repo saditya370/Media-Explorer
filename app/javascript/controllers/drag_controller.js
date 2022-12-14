@@ -2,18 +2,10 @@ import { Controller } from "@hotwired/stimulus"
 
 let albumId;
 const dataAlbumID = "data-album-id";
-
 const dataResourceID = "data-resource-id";
-
 const dataParent = "data-Parent";
-
 let url;
-
 let resourceID;
-
-
-
-
 let newPosition;
 
 
@@ -43,8 +35,6 @@ export default class extends Controller {
     event.preventDefault();
   }
 
-
-
   dragEnd(event) {
     event.preventDefault();
     if (resourceID === null || newPosition === null) {
@@ -57,7 +47,6 @@ export default class extends Controller {
       },
     });
     
-
     fetch(url, {
       method: "PATCH",
       credentials: "same-origin",
@@ -67,32 +56,14 @@ export default class extends Controller {
       },
       body: data,
     });
-    console.log("THIS IS THE URL",url);
-    console.log("THIS IS DATA",data);
-    
   } 
-
-
-
   dragOver(event) {
     event.preventDefault();
     return true;
   }
-
-
   dragEnter(event) {
     event.preventDefault();
   }
-
-
-
-
-
-
-
-
-
-
   setNewPosition(dropTarget, draggedItem) {
     const positionComparison = dropTarget.compareDocumentPosition(draggedItem);
     if (positionComparison & Node.DOCUMENT_POSITION_FOLLOWING) {
@@ -102,14 +73,10 @@ export default class extends Controller {
     }
   }
 
-
-
   getMetaValue(name) {
     const element = document.head.querySelector(`meta[name="${name}"]`);
     return element.getAttribute("content");
   }
-
-
 
   findDropTargetIcon(target, parentID) {
     if (target === null) {
