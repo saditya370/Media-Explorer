@@ -2,17 +2,21 @@
 
 class PhotosController < ApplicationController
   before_action :set_album
-  def index
-  end
+  def index; end
 
   def create
     all_photos = photo_params[:image]
     all_photos.shift
-    all_photos.each do |a|
-      @photo = @album.photos.create!(image: a)
+    pos1 =0
+    all_photos.each do |photo|
+      if @album.photos.count >= 1
+        pos1 = @album.photos.last.position if @album.photos.last.position != nil 
+      end
+      @photo = @album.photos.create!(image: photo,position: pos1 += 1)
+   
     end
 
-    if @photo != nil && @photo.save
+    if @photo.save
       if @album == Album.first
         redirect_to root_path
       else
