@@ -1,33 +1,20 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @album %>
-
 <div id="foo">
   <%= render partial: "photos/form"%>
-
+</div>  
 <div id="bar">
 <%@album.photos.order(position: :asc).each do |photo|%>
-
     <%= render "photos/draggable",photo: photo%>
-  <%end%>
+<%end%>
+</div>
 
-  <style>
+<style>
   #foo{
     text-align: center;
   }
   #bar{
     display: flex;
-    
-
   }
-
-  </style>
-
-<!--
-<div>
-  <%= link_to "Edit this album", edit_album_path(@album) %> |
-  <%= link_to "Back to albums", albums_path %>
-
-  <%= button_to "Destroy this album", @album, method: :delete %>
-</div>
--->
+</style>

@@ -12,14 +12,14 @@ class PhotosController < ApplicationController
       @photo = @album.photos.create!(image: a)
     end
 
-    if @photo.save
+    if @photo != nil && @photo.save
       if @album == Album.first
         redirect_to root_path
       else
         redirect_to album_path(@album)
       end
     else
-      render :new, status: :unprocessable_entity
+      redirect_to album_path(@album)
     end
   end
 

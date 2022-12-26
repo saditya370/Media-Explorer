@@ -1,42 +1,25 @@
 <p style="color: green"><%= notice %></p>
-
-           <%= link_to "New album", new_album_path ,class: "inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-gray-600 text-white hover:bg-gray-700 my-2"%>
-
+<%= link_to "New album", new_album_path ,class: "inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-gray-600 text-white hover:bg-gray-700 my-2"%>
 <%=render partial: "albums/def"%><br>
 <div id="albums">
-
   <% @albums.each do |album| %>
-  <%if album != Album.first%>
-    <%= render album %>
-    <%= link_to "Add Photos to this album", album ,class: "inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-gray-600 text-white hover:bg-gray-700 my-2"%><br>
-    <div id = "photo">
-      <%# <%album = album.order(position: :asc)%> 
-    <%album.photos.order(position: :asc).each do |photo|%>
-
-    <%= render "photos/draggable",photo: photo,album: album%>
-  
-    <%end%>
-    </div>
-    <%end%>
-
-    <style>
-
-     #photo {
+    <%if album != Album.first%>
+      <%= render album %>
+      <%= link_to "Add Photos to this album", album ,class: "inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-gray-600 text-white hover:bg-gray-700 my-2"%><br>
+      <div id = "photo">
+      <%album.photos.order(position: :asc).each do |photo|%>
+        <%= render "photos/draggable",photo: photo,album: album%>
+      <%end%>
+      </div>
+   <%end%>
+<% end %>
+</div>
+<style>
+  #photo {
     display: flex;
     flex-wrap: wrap;
   }
-
-    </style>
+</style>
   
-
-  
-    
-  
-  <% end %>
-
-
-
-
-</div>
 
 
