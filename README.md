@@ -2,7 +2,7 @@
 
 2. **Fucntionalities->**
 
-        *Creating Albums
+        *Creating Albums(like in phones)
         
         *Adding one or multiple photos
         
